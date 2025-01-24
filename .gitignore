@@ -163,3 +163,4 @@ cython_debug/
 
 separate_commits.sh
 *.csv
+*.parquet
