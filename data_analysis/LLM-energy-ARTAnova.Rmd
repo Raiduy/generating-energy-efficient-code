@@ -1,0 +1,191 @@
+---
+title: "LLM-energy"
+output: html_document
+date: "2025-01-08"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd('.')
+```
+
+## Server
+
+#### Setup
+
+```{r, echo=TRUE}
+
+library(arrow)
+library(ARTool)
+library(glue)
+
+device <- "SRV"
+df <- read_parquet(glue("../{device}/r_ready.parquet"))
+colnames(df)[colnames(df) == "Total Energy [kJ]"] ="total_energy_kJ"
+
+rq1_df <- df[df$experiment %in% c("developer", "baseline"),]
+rq2_df <- df[df$experiment %in% c("baseline", "keyword", "platform", "guideline", "few-shot"),]
+rq3_df <- df[df$code %in% c(4, 61, 63, 90),]
+
+
+```
+
+#### RQ1
+
+```{r, echo=TRUE}
+
+rq1_df$experiment_f <- as.factor(rq1_df$experiment)
+
+m <- art(total_energy_kJ ~ experiment_f, data=rq1_df)
+summary(m)
+
+anova(m)
+
+```
+
+#### RQ2
+
+```{r, echo=TRUE}
+
+rq2_df$experiment_f <- as.factor(rq2_df$experiment)
+
+m <- art(total_energy_kJ ~ experiment_f, data=rq2_df)
+summary(m)
+
+anova(m)
+
+```
+
+#### RQ3
+
+```{r, echo=TRUE}
+
+rq3_df$experiment_f <- as.factor(rq3_df$experiment)
+
+m <- art(total_energy_kJ ~ experiment_f, data=rq3_df)
+summary(m)
+
+anova(m)
+
+```
+
+## PC
+
+#### Setup
+
+```{r, echo=TRUE}
+
+library(arrow)
+library(ARTool)
+library(glue)
+
+device <- "PC"
+df <- read_parquet(glue("C:/Users/radua/VU_Ams/MSc/Thesis/llm-energy-analysis/{device}/r_ready.parquet"))
+colnames(df)[colnames(df) == "Total Energy [kJ]"] ="total_energy_kJ"
+
+rq1_df <- df[df$experiment %in% c("developer", "baseline"),]
+rq2_df <- df[df$experiment %in% c("baseline", "keyword", "platform", "guideline", "few-shot"),]
+rq3_df <- df[df$code %in% c(4, 61, 63, 90),]
+
+
+```
+
+#### RQ1
+
+```{r, echo=TRUE}
+
+rq1_df$experiment_f <- as.factor(rq1_df$experiment)
+
+m <- art(total_energy_kJ ~ experiment_f, data=rq1_df)
+summary(m)
+
+anova(m)
+
+```
+
+Cliff's Delta
+
+#### RQ2
+
+```{r, echo=TRUE}
+
+rq2_df$experiment_f <- as.factor(rq2_df$experiment)
+
+m <- art(total_energy_kJ ~ experiment_f, data=rq2_df)
+summary(m)
+
+anova(m)
+
+```
+
+#### RQ3
+
+```{r, echo=TRUE}
+
+rq3_df$experiment_f <- as.factor(rq3_df$experiment)
+
+m <- art(total_energy_kJ ~ experiment_f, data=rq3_df)
+summary(m)
+
+anova(m)
+
+```
+
+## RPI
+
+#### Setup
+
+```{r, echo=TRUE}
+
+library(arrow)
+library(ARTool)
+library(glue)
+
+device <- "RPI"
+df <- read_parquet(glue("C:/Users/radua/VU_Ams/MSc/Thesis/llm-energy-analysis/{device}/r_ready.parquet"))
+colnames(df)[colnames(df) == "Total Energy [kJ]"] ="total_energy_kJ"
+
+rq1_df <- df[df$experiment %in% c("developer", "baseline"),]
+rq2_df <- df[df$experiment %in% c("baseline", "keyword", "platform", "guideline", "few-shot"),]
+rq3_df <- df[df$code %in% c(4, 61, 63, 90),]
+
+```
+
+#### RQ1
+
+```{r, echo=TRUE}
+
+rq1_df$experiment_f <- as.factor(rq1_df$experiment)
+
+m <- art(total_energy_kJ ~ experiment_f, data=rq1_df)
+summary(m)
+
+anova(m)
+
+```
+
+#### RQ2
+
+```{r, echo=TRUE}
+
+rq2_df$experiment_f <- as.factor(rq2_df$experiment)
+
+m <- art(total_energy_kJ ~ experiment_f, data=rq2_df)
+summary(m)
+
+anova(m)
+
+```
+
+#### RQ3
+
+```{r, echo=TRUE}
+
+rq3_df$experiment_f <- as.factor(rq3_df$experiment)
+
+m <- art(total_energy_kJ ~ experiment_f, data=rq3_df)
+summary(m)
+
+anova(m)
+
+```
