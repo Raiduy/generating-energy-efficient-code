@@ -1,0 +1,6 @@
+[submodule "evoeval-solution-generator"]
+	path = evoeval-solution-generator
+	url = https://github.com/Raiduy/evoeval-solution-generator.git
+[submodule "experiment-runner"]
+	path = experiment-runner
+	url = https://github.com/Raiduy/experiment-runner.git
